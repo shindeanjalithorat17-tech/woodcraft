@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>WoodCraft — Luxury Handcrafted Furniture | Mumbai</title>
+  <meta name="description" content="WoodCraft offers premium handcrafted furniture for living rooms, bedrooms, dining & offices. Mumbai showroom. WhatsApp +91 7738615497 for instant quotes."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --g1:#C9963B; --g2:#E8B862; --g3:#9A7028;
+      --dk:#120D05; --dk2:#1C140A; --dk3:#261B0F;
+      --dk4:#311F0D; --tx:#F5EDE0; --mu:#9B876D;
+      --wa:#25D366; --wad:#128C7E;
+      --accent1:#FF6B35; --accent2:#7B4FBE;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;font-size:16px;}
+    body{font-family:'Inter',sans-serif;background:var(--dk);color:var(--tx);overflow-x:hidden;}
+    ::-webkit-scrollbar{width:5px;}
+    ::-webkit-scrollbar-track{background:var(--dk2);}
+    ::-webkit-scrollbar-thumb{background:var(--g1);border-radius:3px;}
+    img{display:block;max-width:100%;}
+    a{text-decoration:none;}
+
+    /* ══ CURSOR ══ */
+    .cursor{
+      width:18px;height:18px;border-radius:50%;
+      background:rgba(201,150,59,.7);
+      position:fixed;pointer-events:none;z-index:99998;
+      transform:translate(-50%,-50%);transition:width .2s,height .2s,opacity .3s;
+      mix-blend-mode:screen;
+    }
+    .cursor-ring{
+      width:38px;height:38px;border-radius:50%;
+      border:1.5px solid rgba(201,150,59,.4);
+      position:fixed;pointer-events:none;z-index:99997;
+      transform:translate(-50%,-50%);transition:all .12s ease-out;
+    }
+    body:hover .cursor{opacity:1;}
+
+    /* ══ LOADER ══ */
+    #loader{
+      position:fixed;inset:0;z-index:99999;
+      background:var(--dk);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+      transition:opacity .8s ease,visibility .8s;
+    }
+    #loader.out{opacity:0;visibility:hidden;}
+    .ld-logo{
+      font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:600;
+      color:var(--g1);letter-spacing:5px;
+      animation:ldPulse 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes ldPulse{from{opacity:.5}to{opacity:1;text-shadow:0 0 30px rgba(201,150,59,.6);}}
+    .ld-track{width:220px;height:2px;background:rgba(201,150,59,.15);overflow:hidden;}
+    .ld-fill{height:100%;background:linear-gradient(90deg,var(--g3),var(--g1),var(--g2));
+      animation:ldFill 1.5s cubic-bezier(.4,0,.2,1) forwards;}
+    @keyframes ldFill{from{width:0}to{width:100%}}
+    .ld-dots{display:flex;gap:.5rem;}
+    .ld-dots span{
+      width:6px;height:6px;border-radius:50%;background:var(--g1);
+      animation:ldDot 1.2s ease-in-out infinite;
+    }
+    .ld-dots span:nth-child(2){animation-delay:.2s;}
+    .ld-dots span:nth-child(3){animation-delay:.4s;}
+    @keyframes ldDot{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-8px);opacity:1;}}
+
+    /* ══ NAV ══ */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:1000;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:1.4rem 5%;transition:all .4s ease;
+    }
+    nav.solid{
+      background:rgba(18,13,5,.96);backdrop-filter:blur(24px);
+      border-bottom:1px solid rgba(201,150,59,.18);padding:.85rem 5%;
+      box-shadow:0 4px 30px rgba(0,0,0,.4);
+    }
+    .logo{
+      font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:700;
+      color:var(--g1);letter-spacing:2px;display:flex;align-items:center;gap:.5rem;
+    }
+    .logo-tree{font-size:1.5rem;animation:treeSway 3s ease-in-out infinite;}
+    @keyframes treeSway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+    .nav-ul{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+    .nav-ul a{
+      font-size:.78rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
+      color:rgba(245,237,224,.8);position:relative;transition:color .3s;
+    }
+    .nav-ul a::after{
+      content:'';position:absolute;bottom:-4px;left:0;
+      width:0;height:1.5px;background:var(--g1);transition:width .3s;border-radius:1px;
+    }
+    .nav-ul a:hover{color:var(--g1);}
+    .nav-ul a:hover::after{width:100%;}
+    .nav-wa{
+      display:flex;align-items:center;gap:.5rem;
+      background:linear-gradient(135deg,#1ebe57,var(--wa));
+      color:#fff !important;padding:.5rem 1.2rem;border-radius:50px;
+      font-size:.76rem;font-weight:700;letter-spacing:1px;
+      box-shadow:0 4px 15px rgba(37,211,102,.25);
+      transition:all .3s;
+    }
+    .nav-wa:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,.4);}
+    .nav-wa::after{display:none !important;}
+    .burger{
+      display:none;flex-direction:column;gap:5px;
+      background:none;border:none;cursor:pointer;
+    }
+    .burger span{width:25px;height:2px;background:var(--tx);border-radius:2px;transition:all .3s;}
+
+    /* ══ HERO ══ */
+    #hero{
+      position:relative;height:100vh;min-height:720px;
+      display:flex;align-items:center;justify-content:center;overflow:hidden;
+    }
+    #heroCanvas{
+      position:absolute;inset:0;z-index:0;
+    }
+    .hero-bg{
+      position:absolute;inset:0;z-index:0;
+      background-image:url('furniture_hero.png');
+      background-size:cover;background-position:center;
+      animation:heroZoom 14s ease-out forwards;
+      filter:contrast(1.08) saturate(1.1);
+    }
+    @keyframes heroZoom{from{transform:scale(1.1)}to{transform:scale(1)}}
+    .hero-ov{
+      position:absolute;inset:0;z-index:1;
+      background:linear-gradient(125deg,rgba(18,13,5,.92) 0%,rgba(18,13,5,.55) 50%,rgba(18,13,5,.8) 100%);
+    }
+    .hero-c{
+      position:relative;z-index:3;text-align:center;padding:0 1.5rem;
+      animation:heroFadeUp 1.2s ease .5s both;
+    }
+    @keyframes heroFadeUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+    .hero-chip{
+      display:inline-flex;align-items:center;gap:.7rem;
+      border:1px solid rgba(201,150,59,.5);border-radius:50px;
+      padding:.45rem 1.4rem;margin-bottom:1.8rem;
+      background:rgba(201,150,59,.08);backdrop-filter:blur(10px);
+    }
+    .chip-dot{width:6px;height:6px;border-radius:50%;background:var(--g1);animation:chipPulse 1.5s infinite;}
+    @keyframes chipPulse{0%,100%{box-shadow:0 0 0 0 rgba(201,150,59,.5)}50%{box-shadow:0 0 0 6px transparent}}
+    .chip-text{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--g2);}
+    .hero-h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(3.2rem,9vw,7.5rem);font-weight:700;
+      line-height:1.02;color:#fff;margin-bottom:1.6rem;
+    }
+    .hero-h1 .line{overflow:hidden;display:block;}
+    .hero-h1 .word{display:inline-block;animation:wordSlide .8s ease both;}
+    .hero-h1 .w1{animation-delay:.6s}
+    .hero-h1 .w2{animation-delay:.75s}
+    .hero-h1 .w3{animation-delay:.9s}
+    .hero-h1 .w4{animation-delay:1.05s}
+    @keyframes wordSlide{from{opacity:0;transform:translateY(100%)}to{opacity:1;transform:translateY(0)}}
+    .hero-h1 em{font-style:italic;
+      background:linear-gradient(135deg,var(--g1),var(--g2));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .hero-p{
+      font-size:1.05rem;font-weight:300;line-height:1.85;
+      color:rgba(245,237,224,.68);max-width:530px;margin:0 auto 2.8rem;
+      animation:heroFadeUp 1s ease 1.2s both;
+    }
+    .hero-btns{
+      display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;
+      animation:heroFadeUp 1s ease 1.4s both;
+    }
+    .btn-shine{
+      position:relative;overflow:hidden;
+      background:linear-gradient(135deg,var(--g3),var(--g1));
+      color:var(--dk);padding:.95rem 2.4rem;border-radius:4px;
+      font-size:.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+      border:none;cursor:pointer;transition:all .35s;
+      clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+    }
+    .btn-shine::before{
+      content:'';position:absolute;top:-50%;left:-60%;
+      width:30%;height:200%;
+      background:rgba(255,255,255,.25);
+      transform:skewX(-20deg);
+      animation:btnShine 3s infinite 2s;
+    }
+    @keyframes btnShine{0%{left:-60%}30%{left:130%}100%{left:130%}}
+    .btn-shine:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(201,150,59,.45);}
+    .btn-wa-hero{
+      display:flex;align-items:center;gap:.7rem;
+      background:rgba(37,211,102,.12);color:var(--wa);
+      border:1.5px solid rgba(37,211,102,.4);padding:.95rem 2.2rem;border-radius:4px;
+      font-size:.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+      transition:all .35s;
+    }
+    .btn-wa-hero:hover{
+      background:var(--wa);color:#fff;border-color:var(--wa);
+      transform:translateY(-3px);box-shadow:0 15px 40px rgba(37,211,102,.3);
+    }
+    .hero-scroll{
+      position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+      display:flex;flex-direction:column;align-items:center;gap:.6rem;
+      color:rgba(255,255,255,.35);font-size:.62rem;letter-spacing:3px;text-transform:uppercase;
+      animation:heroFadeUp 1s ease 1.8s both;
+    }
+    .scroll-bar{
+      width:1.5px;height:60px;
+      background:linear-gradient(to bottom,var(--g1) 0%,transparent 100%);
+      animation:scrollBar 2s ease-in-out infinite;
+    }
+    @keyframes scrollBar{0%,100%{opacity:.3;height:40px}50%{opacity:1;height:65px}}
+
+    /* ══ TICKER ══ */
+    .ticker-wrap{
+      background:linear-gradient(90deg,var(--g3) 0%,var(--g1) 50%,var(--g3) 100%);
+      padding:.9rem 0;overflow:hidden;position:relative;
+    }
+    .ticker-wrap::before,.ticker-wrap::after{
+      content:'';position:absolute;top:0;width:80px;height:100%;z-index:2;
+    }
+    .ticker-wrap::before{left:0;background:linear-gradient(90deg,var(--g3),transparent);}
+    .ticker-wrap::after{right:0;background:linear-gradient(-90deg,var(--g3),transparent);}
+    .ticker{display:flex;gap:0;animation:ticker 22s linear infinite;width:max-content;}
+    .tick-item{
+      display:flex;align-items:center;gap:1.2rem;
+      padding:0 2.5rem;white-space:nowrap;
+      font-size:.72rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+      color:var(--dk);
+    }
+    .tick-sep{opacity:.5;font-size:.8rem;}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ══ SECTIONS ══ */
+    section{padding:8rem 6%;}
+    .tag{
+      font-size:.66rem;letter-spacing:5px;text-transform:uppercase;
+      color:var(--g1);display:inline-flex;align-items:center;gap:.6rem;margin-bottom:.8rem;
+    }
+    .tag::before{content:'';width:20px;height:1px;background:var(--g1);}
+    .heading{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,4.5vw,3.4rem);font-weight:600;line-height:1.12;
+      color:var(--tx);margin-bottom:1rem;
+    }
+    .heading em{
+      font-style:italic;
+      background:linear-gradient(135deg,var(--g1),var(--g2));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .bar{width:60px;height:2.5px;border-radius:2px;margin:1.2rem 0;
+      background:linear-gradient(90deg,var(--g1),var(--g2));
+    }
+    .bar.c{margin:1.2rem auto;}
+
+    /* ══ ABOUT ══ */
+    #about{background:var(--dk2);display:grid;grid-template-columns:1fr 1.1fr;gap:7rem;align-items:center;}
+    .about-gallery{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:1rem;}
+    .ag-main{grid-column:1/3;aspect-ratio:16/9;object-fit:cover;
+      filter:contrast(1.1) saturate(1.15);border-radius:2px;
+      transition:transform .5s;
+    }
+    .ag-main:hover{transform:scale(1.02);}
+    .ag-s1,.ag-s2{aspect-ratio:4/3;object-fit:cover;filter:contrast(1.1) saturate(1.15);
+      border-radius:2px;transition:transform .5s;}
+    .ag-s1:hover,.ag-s2:hover{transform:scale(1.03);}
+    .about-badge{
+      position:absolute;top:-1.5rem;right:-1.5rem;
+      background:linear-gradient(135deg,var(--g3),var(--g1));
+      color:var(--dk);padding:1.4rem;text-align:center;
+      border-radius:2px;width:120px;box-shadow:0 10px 30px rgba(201,150,59,.3);
+    }
+    .about-badge b{
+      display:block;font-family:'Playfair Display',serif;
+      font-size:2.6rem;line-height:1;font-weight:700;
+    }
+    .about-badge small{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;opacity:.8;}
+    .about-body p{
+      font-size:.96rem;font-weight:300;line-height:1.95;
+      color:rgba(245,237,224,.68);margin-bottom:1.3rem;
+    }
+    .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1.8rem 0;}
+    .feat-item{
+      display:flex;align-items:center;gap:.8rem;
+      padding:.9rem;border:1px solid rgba(201,150,59,.1);
+      background:rgba(201,150,59,.03);border-radius:4px;
+      transition:all .3s;cursor:default;
+    }
+    .feat-item:hover{border-color:rgba(201,150,59,.3);background:rgba(201,150,59,.07);transform:translateX(4px);}
+    .feat-icon{font-size:1.5rem;flex-shrink:0;}
+    .feat-item h4{font-size:.82rem;font-weight:600;margin-bottom:.18rem;}
+    .feat-item p{font-size:.73rem;color:var(--mu);line-height:1.4;margin:0;}
+    .stats-row{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid rgba(201,150,59,.12);flex-wrap:wrap;}
+    .stat b{
+      display:block;font-family:'Playfair Display',serif;
+      font-size:3rem;font-weight:700;line-height:1;
+      background:linear-gradient(135deg,var(--g1),var(--g2));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .stat small{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--mu);}
+
+    /* ══ COLLECTIONS ══ */
+    #collections{background:var(--dk);}
+    .coll-head{text-align:center;margin-bottom:4rem;}
+    .tabs{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-top:2rem;}
+    .tab{
+      padding:.5rem 1.4rem;background:none;
+      border:1px solid rgba(201,150,59,.2);color:var(--mu);
+      font-size:.75rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+      cursor:pointer;transition:all .25s;border-radius:3px;
+      font-family:'Inter',sans-serif;
+    }
+    .tab.on,.tab:hover{
+      background:linear-gradient(135deg,var(--g3),var(--g1));
+      color:var(--dk);border-color:var(--g1);
+      box-shadow:0 4px 15px rgba(201,150,59,.25);
+    }
+    .grid-products{
+      display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+      gap:1.8rem;
+    }
+    .pcard{
+      background:var(--dk2);border:1px solid rgba(201,150,59,.07);
+      border-radius:6px;overflow:hidden;cursor:pointer;
+      transition:all .4s cubic-bezier(.175,.885,.32,1.275);
+      position:relative;
+    }
+    .pcard::before{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(201,150,59,.06),transparent);
+      opacity:0;transition:opacity .4s;z-index:0;
+    }
+    .pcard:hover{transform:translateY(-10px) scale(1.01);border-color:rgba(201,150,59,.35);
+      box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 0 1px rgba(201,150,59,.1);}
+    .pcard:hover::before{opacity:1;}
+    .pcard-badge{
+      position:absolute;top:.9rem;left:.9rem;z-index:5;
+      background:linear-gradient(135deg,var(--g3),var(--g1));
+      color:var(--dk);padding:.22rem .7rem;border-radius:2px;
+      font-size:.62rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+    }
+    .pcard-new{background:linear-gradient(135deg,#1ebe57,var(--wa))!important;}
+    .pcard-hot{background:linear-gradient(135deg,#e05a00,var(--accent1))!important;}
+    .pcard-img-wrap{aspect-ratio:4/3;overflow:hidden;position:relative;}
+    .pcard-img{
+      width:100%;height:100%;object-fit:cover;
+      transition:transform .7s ease,filter .4s;
+      filter:contrast(1.06) saturate(1.1);
+    }
+    .pcard:hover .pcard-img{transform:scale(1.08);filter:contrast(1.12) saturate(1.2);}
+    .pcard-overlay{
+      position:absolute;inset:0;background:rgba(0,0,0,.6);
+      display:flex;align-items:center;justify-content:center;
+      opacity:0;transition:opacity .35s;
+    }
+    .pcard:hover .pcard-overlay{opacity:1;}
+    .pcard-zoom-icon{font-size:2rem;color:#fff;transform:scale(.6);transition:transform .35s;}
+    .pcard:hover .pcard-zoom-icon{transform:scale(1);}
+    .pcard-body{padding:1.5rem;position:relative;z-index:1;}
+    .pcard-cat{font-size:.63rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--g1);margin-bottom:.4rem;}
+    .pcard-body h3{
+      font-family:'Playfair Display',serif;
+      font-size:1.25rem;font-weight:600;margin-bottom:.6rem;color:var(--tx);
+    }
+    .pcard-body p{font-size:.82rem;color:var(--mu);line-height:1.65;margin-bottom:1.2rem;}
+    .pcard-footer{
+      display:flex;align-items:center;justify-content:space-between;
+      border-top:1px solid rgba(201,150,59,.1);padding-top:1rem;gap:.8rem;
+    }
+    .pcard-price{
+      font-family:'Playfair Display',serif;
+      font-size:1.5rem;font-weight:700;
+      background:linear-gradient(135deg,var(--g1),var(--g2));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .pcard-price sub{font-size:.7rem;font-family:'Inter',sans-serif;color:var(--mu);-webkit-text-fill-color:var(--mu);}
+    .pwa-btn{
+      display:flex;align-items:center;gap:.4rem;
+      background:rgba(37,211,102,.1);color:var(--wa);
+      border:1px solid rgba(37,211,102,.25);padding:.45rem .9rem;border-radius:4px;
+      font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+      transition:all .3s;
+    }
+    .pwa-btn:hover{background:var(--wa);color:#fff;border-color:var(--wa);transform:scale(1.04);}
+
+    /* ══ LIGHTBOX ══ */
+    #lb{
+      display:none;position:fixed;inset:0;z-index:99990;
+      background:rgba(0,0,0,.95);align-items:center;justify-content:center;
+      flex-direction:column;gap:1rem;
+    }
+    #lb.open{display:flex;}
+    #lb img{max-width:90vw;max-height:82vh;object-fit:contain;border-radius:4px;}
+    #lb-close{
+      position:fixed;top:1.5rem;right:2rem;font-size:2.4rem;
+      color:rgba(255,255,255,.7);cursor:pointer;transition:color .3s;background:none;border:none;
+    }
+    #lb-close:hover{color:#fff;}
+    #lb-caption{font-size:.85rem;color:rgba(255,255,255,.5);text-align:center;}
+
+    /* ══ PROMISE BAND ══ */
+    #promise{
+      background:linear-gradient(135deg,var(--dk3),var(--dk4));
+      padding:5rem 6%;
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;
+      border-top:1px solid rgba(201,150,59,.08);border-bottom:1px solid rgba(201,150,59,.08);
+    }
+    .prm-item{text-align:center;padding:2rem 1.5rem;position:relative;}
+    .prm-item::after{
+      content:'';position:absolute;right:0;top:20%;height:60%;
+      width:1px;background:rgba(201,150,59,.12);
+    }
+    .prm-item:last-child::after{display:none;}
+    .prm-icon{
+      width:64px;height:64px;border-radius:50%;margin:0 auto 1.2rem;
+      background:linear-gradient(135deg,rgba(201,150,59,.15),rgba(201,150,59,.05));
+      border:1px solid rgba(201,150,59,.2);
+      display:flex;align-items:center;justify-content:center;font-size:1.8rem;
+      transition:all .4s;
+    }
+    .prm-item:hover .prm-icon{
+      background:linear-gradient(135deg,var(--g3),var(--g1));
+      box-shadow:0 10px 30px rgba(201,150,59,.3);transform:translateY(-4px) rotate(10deg);
+    }
+    .prm-item h3{
+      font-family:'Playfair Display',serif;font-size:1.05rem;
+      margin-bottom:.5rem;color:var(--tx);
+    }
+    .prm-item p{font-size:.8rem;color:var(--mu);line-height:1.7;}
+
+    /* ══ PROCESS ══ */
+    #process{background:var(--dk2);}
+    .process-head{text-align:center;margin-bottom:5rem;}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative;}
+    .steps::before{
+      content:'';position:absolute;top:50px;left:12.5%;right:12.5%;height:1px;
+      background:linear-gradient(90deg,transparent,rgba(201,150,59,.3),transparent);
+    }
+    .step{text-align:center;padding:1.5rem 1rem;position:relative;}
+    .step-num{
+      width:56px;height:56px;border-radius:50%;
+      background:linear-gradient(135deg,var(--g3),var(--g1));
+      color:var(--dk);font-family:'Playfair Display',serif;
+      font-size:1.3rem;font-weight:700;
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 1.5rem;
+      box-shadow:0 6px 20px rgba(201,150,59,.25);
+      transition:all .4s;
+    }
+    .step:hover .step-num{transform:scale(1.2) rotate(10deg);box-shadow:0 10px 30px rgba(201,150,59,.45);}
+    .step-emoji{font-size:1.8rem;margin-bottom:.7rem;}
+    .step h3{
+      font-family:'Playfair Display',serif;font-size:1.05rem;
+      font-weight:600;margin-bottom:.6rem;color:var(--tx);
+    }
+    .step p{font-size:.8rem;color:var(--mu);line-height:1.7;}
+
+    /* ══ TESTIMONIALS ══ */
+    #testimonials{background:var(--dk);}
+    .testi-head{text-align:center;margin-bottom:3.5rem;}
+    .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;}
+    .tcard{
+      background:var(--dk2);border:1px solid rgba(201,150,59,.08);
+      border-radius:8px;padding:2rem;position:relative;overflow:hidden;
+      transition:all .4s;
+    }
+    .tcard::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--g3),var(--g1),var(--g2));
+      transform:scaleX(0);transform-origin:left;transition:transform .4s;
+    }
+    .tcard:hover{border-color:rgba(201,150,59,.25);transform:translateY(-6px);
+      box-shadow:0 25px 50px rgba(0,0,0,.4);}
+    .tcard:hover::before{transform:scaleX(1);}
+    .stars{color:var(--g1);letter-spacing:2px;font-size:.85rem;margin-bottom:1rem;}
+    .tcard-q{
+      font-family:'Playfair Display',serif;
+      font-size:4rem;color:rgba(201,150,59,.15);line-height:1;margin-bottom:-.8rem;
+    }
+    .tcard-text{
+      font-size:.9rem;line-height:1.85;
+      color:rgba(245,237,224,.72);margin-bottom:1.5rem;font-style:italic;
+    }
+    .tcard-author{display:flex;align-items:center;gap:.9rem;}
+    .tcard-av{
+      width:46px;height:46px;border-radius:50%;
+      background:linear-gradient(135deg,var(--g3),var(--g1));
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Playfair Display',serif;font-size:1.1rem;
+      color:var(--dk);font-weight:700;flex-shrink:0;
+    }
+    .tcard-author h4{font-size:.85rem;font-weight:600;margin-bottom:.2rem;}
+    .tcard-author span{font-size:.72rem;color:var(--mu);}
+
+    /* ══ WHATSAPP HERO SECTION ══ */
+    #wa-hero{
+      position:relative;padding:9rem 6%;text-align:center;overflow:hidden;
+    }
+    #wa-hero::before{
+      content:'';position:absolute;inset:0;
+      background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(37,211,102,.09),transparent 70%),
+                 radial-gradient(ellipse 40% 40% at 20% 20%,rgba(201,150,59,.06),transparent),
+                 var(--dk3);
+    }
+    .wa-hero-rings{
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+      width:600px;height:600px;pointer-events:none;
+    }
+    .ring{
+      position:absolute;inset:0;border-radius:50%;
+      border:1px solid rgba(37,211,102,.07);
+      animation:ringExpand 4s ease-in-out infinite;
+    }
+    .ring:nth-child(2){animation-delay:1.3s;inset:10%;}
+    .ring:nth-child(3){animation-delay:2.6s;inset:20%;}
+    @keyframes ringExpand{0%,100%{opacity:.3}50%{opacity:1}}
+    .wa-hero-c{position:relative;z-index:2;}
+    .wa-big{
+      font-size:5rem;display:inline-block;margin-bottom:1.5rem;
+      animation:waBig 2.5s ease-in-out infinite;
+      filter:drop-shadow(0 0 20px rgba(37,211,102,.4));
+    }
+    @keyframes waBig{0%,100%{transform:scale(1) rotate(-5deg)}50%{transform:scale(1.1) rotate(5deg)}}
+    .wa-hero-c h2{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,4vw,3.2rem);color:#fff;margin-bottom:1rem;
+    }
+    .wa-hero-c h2 em{
+      font-style:italic;
+      background:linear-gradient(135deg,var(--wa),#1ebe57);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .wa-hero-c p{
+      font-size:1rem;color:rgba(255,255,255,.6);max-width:490px;
+      margin:0 auto 2.5rem;line-height:1.85;
+    }
+    .wa-num-box{
+      display:inline-flex;align-items:center;gap:1rem;
+      background:rgba(37,211,102,.06);border:1px solid rgba(37,211,102,.25);
+      border-radius:12px;padding:1rem 2rem;margin-bottom:2.5rem;
+      backdrop-filter:blur(10px);
+    }
+    .wa-num-box span{
+      font-size:1.5rem;font-weight:700;color:var(--wa);letter-spacing:2px;
+    }
+    .wa-main-btn{
+      display:inline-flex;align-items:center;gap:.8rem;
+      background:linear-gradient(135deg,#1ebe57,var(--wa));
+      color:#fff;padding:1.1rem 3rem;border-radius:50px;
+      font-size:.9rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+      box-shadow:0 0 40px rgba(37,211,102,.25);transition:all .4s;
+    }
+    .wa-main-btn:hover{
+      transform:translateY(-4px);
+      box-shadow:0 0 60px rgba(37,211,102,.5),0 15px 35px rgba(37,211,102,.3);
+    }
+    .wa-shortcuts{
+      display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;margin-top:2rem;
+    }
+    .wa-sc{
+      display:inline-flex;align-items:center;gap:.5rem;
+      background:rgba(255,255,255,.04);color:rgba(255,255,255,.65);
+      border:1px solid rgba(37,211,102,.18);padding:.5rem 1.1rem;border-radius:50px;
+      font-size:.78rem;transition:all .3s;
+    }
+    .wa-sc:hover{
+      background:rgba(37,211,102,.12);color:#fff;border-color:var(--wa);
+      transform:translateY(-2px);
+    }
+
+    /* ══ CONTACT ══ */
+    #contact{
+      background:var(--dk2);
+      display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;
+    }
+    .cinfo h2{margin-bottom:1.2rem;}
+    .cinfo>p{
+      font-size:.95rem;line-height:1.85;
+      color:rgba(245,237,224,.6);margin-bottom:2.5rem;
+    }
+    .clist{display:flex;flex-direction:column;gap:1rem;}
+    .citem{
+      display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;
+      border:1px solid rgba(201,150,59,.1);border-radius:6px;
+      background:rgba(201,150,59,.03);transition:all .3s;
+    }
+    .citem:hover{border-color:rgba(201,150,59,.28);background:rgba(201,150,59,.06);transform:translateX(5px);}
+    .citem-icon{
+      width:48px;height:48px;border-radius:6px;flex-shrink:0;
+      background:linear-gradient(135deg,rgba(201,150,59,.15),rgba(201,150,59,.05));
+      border:1px solid rgba(201,150,59,.18);
+      display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+    }
+    .citem h4{font-size:.66rem;letter-spacing:2px;text-transform:uppercase;color:var(--g1);margin-bottom:.25rem;}
+    .citem p{font-size:.9rem;color:var(--tx);}
+    .citem a{color:var(--tx);transition:color .3s;}
+    .citem a:hover{color:var(--g1);}
+
+    /* Form */
+    .cform{
+      background:var(--dk3);padding:2.5rem;border:1px solid rgba(201,150,59,.1);
+      border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.3);
+    }
+    .cform h3{
+      font-family:'Playfair Display',serif;font-size:1.7rem;
+      margin-bottom:1.5rem;color:var(--tx);
+    }
+    .f2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    .fg{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1rem;}
+    .fg label{font-size:.66rem;letter-spacing:2px;text-transform:uppercase;color:var(--mu);}
+    .fg input,.fg select,.fg textarea{
+      background:rgba(255,255,255,.04);border:1px solid rgba(201,150,59,.18);
+      color:var(--tx);padding:.8rem 1rem;font-family:'Inter',sans-serif;
+      font-size:.9rem;outline:none;transition:all .3s;width:100%;border-radius:4px;
+    }
+    .fg input:focus,.fg select:focus,.fg textarea:focus{
+      border-color:var(--g1);
+      box-shadow:0 0 0 3px rgba(201,150,59,.1);
+    }
+    .fg select option{background:var(--dk2);}
+    .fg textarea{resize:vertical;min-height:110px;}
+    .cform-btns{display:flex;flex-direction:column;gap:.7rem;}
+    .fsub{
+      background:linear-gradient(135deg,var(--g3),var(--g1));color:var(--dk);
+      border:none;cursor:pointer;padding:1rem;width:100%;
+      font-family:'Inter',sans-serif;font-size:.82rem;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;border-radius:4px;
+      transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.5rem;
+    }
+    .fsub:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 10px 25px rgba(201,150,59,.35);}
+    .fwa{
+      background:rgba(37,211,102,.08);color:var(--wa);
+      border:1.5px solid rgba(37,211,102,.3);padding:1rem;width:100%;
+      font-family:'Inter',sans-serif;font-size:.82rem;font-weight:700;
+      letter-spacing:2px;text-transform:uppercase;border-radius:4px;
+      transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.5rem;
+    }
+    .fwa:hover{background:var(--wa);color:#fff;border-color:var(--wa);}
+
+    /* ══ FLOATING WA WIDGET ══ */
+    #waWidget{position:fixed;bottom:2rem;right:2rem;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:.8rem;}
+    #waChat{
+      background:var(--dk2);border:1px solid rgba(37,211,102,.25);
+      border-radius:16px;width:295px;overflow:hidden;
+      box-shadow:0 15px 50px rgba(0,0,0,.5);
+      display:none;animation:chatPop .3s cubic-bezier(.175,.885,.32,1.275) both;
+    }
+    #waChat.show{display:block;}
+    @keyframes chatPop{from{opacity:0;transform:scale(.75) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    .wc-head{
+      background:linear-gradient(135deg,#075e54,#128c7e);
+      padding:1rem 1.2rem;display:flex;align-items:center;gap:.8rem;position:relative;
+    }
+    .wc-av{
+      width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);
+      display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+      border:2px solid rgba(255,255,255,.2);flex-shrink:0;
+    }
+    .wc-info h4{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.15rem;}
+    .wc-info span{font-size:.7rem;color:rgba(255,255,255,.75);}
+    .wc-online{display:inline-block;width:8px;height:8px;border-radius:50%;background:#25ff8a;margin-right:.3rem;}
+    .wc-x{
+      position:absolute;top:.8rem;right:.9rem;
+      background:none;border:none;color:rgba(255,255,255,.7);
+      font-size:1.2rem;cursor:pointer;line-height:1;transition:color .2s;
+    }
+    .wc-x:hover{color:#fff;}
+    .wc-body{
+      padding:1rem;background:#0d1117;min-height:130px;
+      display:flex;flex-direction:column;gap:.7rem;
+    }
+    .wc-bubble{
+      background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.15);
+      border-radius:0 12px 12px 12px;padding:.75rem .9rem;
+      font-size:.82rem;color:rgba(245,237,224,.85);line-height:1.55;
+      max-width:85%;animation:bubbleIn .4s ease .3s both;
+    }
+    @keyframes bubbleIn{from{opacity:0;transform:translateX(-15px)}to{opacity:1;transform:translateX(0)}}
+    .wc-bubble2{
+      background:rgba(201,150,59,.08);border:1px solid rgba(201,150,59,.15);
+      border-radius:0 12px 12px 12px;padding:.75rem .9rem;
+      font-size:.82rem;color:rgba(245,237,224,.85);line-height:1.55;
+      max-width:85%;animation:bubbleIn .4s ease .8s both;
+    }
+    .wc-footer{padding:.8rem 1rem;border-top:1px solid rgba(255,255,255,.06);}
+    .wc-link{
+      display:flex;align-items:center;justify-content:center;gap:.6rem;
+      background:linear-gradient(135deg,#1ebe57,var(--wa));color:#fff;
+      padding:.8rem;border-radius:8px;font-size:.82rem;font-weight:700;
+      letter-spacing:1px;text-transform:uppercase;transition:all .3s;
+    }
+    .wc-link:hover{opacity:.9;transform:scale(1.02);}
+    #waFab{
+      width:66px;height:66px;border-radius:50%;border:none;cursor:pointer;
+      background:linear-gradient(135deg,#1ebe57,var(--wa));
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 6px 25px rgba(37,211,102,.45);
+      animation:fabPulse 2.5s ease-in-out infinite;transition:transform .3s;position:relative;
+    }
+    #waFab:hover{transform:scale(1.12) rotate(15deg);}
+    @keyframes fabPulse{
+      0%,100%{box-shadow:0 6px 25px rgba(37,211,102,.45);}
+      50%{box-shadow:0 6px 45px rgba(37,211,102,.7),0 0 0 14px rgba(37,211,102,.08);}
+    }
+    #waFab svg{width:34px;height:34px;fill:#fff;}
+    .fab-badge{
+      position:absolute;top:-3px;right:-3px;
+      width:20px;height:20px;border-radius:50%;
+      background:#FF3B30;color:#fff;font-size:.65rem;font-weight:700;
+      display:flex;align-items:center;justify-content:center;
+      border:2px solid var(--dk);animation:badgePulse 1s ease infinite;
+    }
+    @keyframes badgePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+
+    /* ══ FOOTER ══ */
+    footer{
+      background:var(--dk);border-top:1px solid rgba(201,150,59,.1);
+      padding:5rem 6% 2.5rem;
+    }
+    .fg-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:4rem;}
+    .fb-logo .logo{margin-bottom:1rem;font-size:1.45rem;}
+    .fb-p{font-size:.88rem;color:var(--mu);line-height:1.8;max-width:270px;margin-bottom:1.5rem;}
+    .fb-wa{
+      display:inline-flex;align-items:center;gap:.5rem;
+      background:linear-gradient(135deg,#1ebe57,var(--wa));
+      color:#fff;padding:.55rem 1.2rem;border-radius:50px;
+      font-size:.78rem;font-weight:700;transition:all .3s;
+    }
+    .fb-wa:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,.3);}
+    .fcol h4{
+      font-size:.68rem;letter-spacing:3px;text-transform:uppercase;
+      color:var(--g1);margin-bottom:1.3rem;
+    }
+    .fcol ul{list-style:none;}
+    .fcol li{margin-bottom:.75rem;}
+    .fcol a{
+      font-size:.88rem;color:var(--mu);transition:all .3s;
+      display:inline-flex;align-items:center;gap:.5rem;
+    }
+    .fcol a:hover{color:var(--g1);transform:translateX(4px);}
+    .f-bottom{
+      border-top:1px solid rgba(201,150,59,.08);padding-top:2rem;
+      display:flex;justify-content:space-between;align-items:center;
+      font-size:.78rem;color:var(--mu);flex-wrap:wrap;gap:1rem;
+    }
+    .f-bottom a{color:var(--g1);}
+
+    /* ══ MOBILE MENU ══ */
+    .mmenu{
+      display:none;position:fixed;inset:0;z-index:9998;
+      background:rgba(18,13,5,.98);backdrop-filter:blur(20px);
+      flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;
+    }
+    .mmenu.open{display:flex;}
+    .mmenu a{
+      font-family:'Playfair Display',serif;font-size:1.7rem;
+      color:var(--tx);transition:color .3s;
+    }
+    .mmenu a:hover{color:var(--g1);}
+    .mm-close{
+      position:absolute;top:1.5rem;right:2rem;font-size:2.2rem;
+      cursor:pointer;color:var(--tx);background:none;border:none;
+    }
+
+    /* ══ REVEAL ══ */
+    .rv{opacity:0;transform:translateY(40px);transition:opacity .75s ease,transform .75s ease;}
+    .rv.go{opacity:1;transform:translateY(0);}
+    .rv-l{opacity:0;transform:translateX(-40px);transition:opacity .75s ease,transform .75s ease;}
+    .rv-l.go{opacity:1;transform:translateX(0);}
+    .rv-r{opacity:0;transform:translateX(40px);transition:opacity .75s ease,transform .75s ease;}
+    .rv-r.go{opacity:1;transform:translateX(0);}
+
+    /* ══ RESPONSIVE ══ */
+    @media(max-width:1024px){
+      .nav-ul{display:none;} .burger{display:flex;}
+      #about{grid-template-columns:1fr;gap:3.5rem;}
+      .about-badge{top:1rem;right:1rem;}
+      #contact{grid-template-columns:1fr;gap:3.5rem;}
+      .fg-grid{grid-template-columns:1fr 1fr;}
+      .steps{grid-template-columns:1fr 1fr;}
+      .steps::before{display:none;}
+    }
+    @media(max-width:640px){
+      section{padding:5rem 5%;}
+      .fg-grid{grid-template-columns:1fr;}
+      .steps{grid-template-columns:1fr;}
+      #promise{grid-template-columns:1fr 1fr;}
+      .f2{grid-template-columns:1fr;}
+      .f-bottom{flex-direction:column;text-align:center;}
+      .about-gallery{grid-template-columns:1fr;}
+      .ag-main{grid-column:1;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-logo">🪵 WoodCraft</div>
+  <div class="ld-track"><div class="ld-fill"></div></div>
+  <div class="ld-dots"><span></span><span></span><span></span></div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mmenu" id="mmenu">
+  <button class="mm-close" id="mmClose">✕</button>
+  <a href="#about" onclick="mm(0)">About</a>
+  <a href="#collections" onclick="mm(0)">Collections</a>
+  <a href="#process" onclick="mm(0)">Process</a>
+  <a href="#testimonials" onclick="mm(0)">Reviews</a>
+  <a href="#contact" onclick="mm(0)">Contact</a>
+  <a href="https://wa.me/917738615497?text=Hello%20WoodCraft!" target="_blank" style="color:var(--wa);">💬 +91 7738615497</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="logo"><span class="logo-tree">🪵</span> WoodCraft</a>
+  <ul class="nav-ul">
+    <li><a href="#about">About</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li>
+      <a href="https://wa.me/917738615497?text=Hello%20WoodCraft!%20I%27d%20like%20to%20enquire." target="_blank" class="nav-wa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us
+      </a>
+    </li>
+  </ul>
+  <button class="burger" id="burger" onclick="mm(1)"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-c">
+    <div class="hero-chip">
+      <span class="chip-dot"></span>
+      <span class="chip-text">Mumbai's Premier Furniture Studio</span>
+      <span class="chip-dot"></span>
+    </div>
+    <h1 class="hero-h1">
+      <span class="line"><span class="word w1">Crafting</span></span>
+      <span class="line"><span class="word w2"><em>Timeless</em></span></span>
+      <span class="line"><span class="word w3">Spaces</span></span>
+    </h1>
+    <p class="hero-p">Where masterful craftsmanship meets soulful design. Premium handcrafted furniture that transforms your house into a home — built to last generations.</p>
+    <div class="hero-btns">
+      <a href="#collections" class="btn-shine">Explore Collection ✦</a>
+      <a href="https://wa.me/917738615497?text=Hello!%20I%27d%20like%20to%20enquire%20about%20furniture." target="_blank" class="btn-wa-hero">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat Now: +91 7738615497
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-bar"></div>
+    Scroll Down
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker" id="ticker">
+    <div class="tick-item">🛋️ Living Room <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🛏️ Bedroom Sets <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🍽️ Dining Furniture <span class="tick-sep">✦</span></div>
+    <div class="tick-item">💼 Office Desks <span class="tick-sep">✦</span></div>
+    <div class="tick-item">✏️ Custom Orders <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🌿 Solid Wood <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🚚 Free Delivery <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🏆 15-Year Warranty <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🛋️ Living Room <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🛏️ Bedroom Sets <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🍽️ Dining Furniture <span class="tick-sep">✦</span></div>
+    <div class="tick-item">💼 Office Desks <span class="tick-sep">✦</span></div>
+    <div class="tick-item">✏️ Custom Orders <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🌿 Solid Wood <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🚚 Free Delivery <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🏆 15-Year Warranty <span class="tick-sep">✦</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-gallery rv-l">
+    <img src="furniture_hero.png" alt="WoodCraft Showroom" class="ag-main" onclick="openLB(this.src,'WoodCraft Showroom')" style="cursor:zoom-in;"/>
+    <img src="furniture_sofa.png" alt="Premium Sofa" class="ag-s1" onclick="openLB(this.src,'Premium Sofa Collection')" style="cursor:zoom-in;"/>
+    <img src="furniture_bedroom.png" alt="Bedroom Set" class="ag-s2" onclick="openLB(this.src,'Heritage Bedroom Set')" style="cursor:zoom-in;"/>
+    <div class="about-badge">
+      <b>15</b>
+      <small>Years of Craft</small>
+    </div>
+  </div>
+  <div class="about-body rv-r">
+    <span class="tag">Our Legacy</span>
+    <h2 class="heading">Built with <em>Passion</em>,<br>Perfected by Craft</h2>
+    <div class="bar"></div>
+    <p>WoodCraft is a family-owned furniture studio with over 15 years of heritage. Every piece that leaves our workshop carries the fingerprints of master artisans who pour their soul into the grain of every plank.</p>
+    <p>From solid teak and sheesham to premium engineered finishes — we blend timeless design with the demands of modern Indian living, creating furniture that is as functional as it is breathtaking.</p>
+    <div class="feat-grid">
+      <div class="feat-item"><span class="feat-icon">🌿</span><div><h4>Sustainable Wood</h4><p>Responsibly sourced certified hardwoods</p></div></div>
+      <div class="feat-item"><span class="feat-icon">🔨</span><div><h4>Handcrafted</h4><p>Each piece by master artisans</p></div></div>
+      <div class="feat-item"><span class="feat-icon">🎨</span><div><h4>Custom Design</h4><p>Bespoke to fit your space perfectly</p></div></div>
+      <div class="feat-item"><span class="feat-icon">🚚</span><div><h4>Free Installation</h4><p>Delivery + setup at your doorstep</p></div></div>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><b class="count" data-target="2000">0</b><small>Happy Homes</small></div>
+      <div class="stat"><b class="count" data-target="50">0</b><small>Designs</small></div>
+      <div class="stat"><b class="count" data-target="15">0</b><small>Yr Warranty</small></div>
+      <div class="stat"><b class="count" data-target="98">0</b><small>% Satisfaction</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section id="collections">
+  <div class="coll-head rv">
+    <span class="tag">Our Collection</span>
+    <h2 class="heading">Furniture for Every <em>Room</em></h2>
+    <div class="bar c"></div>
+    <p style="color:var(--mu);max-width:480px;margin:0 auto;font-size:.95rem;line-height:1.85;">Explore our handcrafted range — each piece a blend of art, function, and lasting quality</p>
+    <div class="tabs">
+      <button class="tab on" onclick="filterP(this,'all')" id="tab-all">All</button>
+      <button class="tab" onclick="filterP(this,'living')" id="tab-living">🛋️ Living Room</button>
+      <button class="tab" onclick="filterP(this,'bedroom')" id="tab-bedroom">🛏️ Bedroom</button>
+      <button class="tab" onclick="filterP(this,'dining')" id="tab-dining">🍽️ Dining</button>
+      <button class="tab" onclick="filterP(this,'office')" id="tab-office">💼 Office</button>
+    </div>
+  </div>
+  <div class="grid-products" id="prodGrid">
+
+    <div class="pcard rv" data-cat="living">
+      <span class="pcard-badge">Bestseller</span>
+      <div class="pcard-img-wrap">
+        <img src="furniture_sofa.png" alt="Royal Sofa" class="pcard-img" onclick="openLB(this.src,'Royal Walnut Sofa Set')"/>
+        <div class="pcard-overlay"><span class="pcard-zoom-icon">🔍</span></div>
+      </div>
+      <div class="pcard-body">
+        <p class="pcard-cat">Living Room</p>
+        <h3>Royal Walnut Sofa Set</h3>
+        <p>5-seater premium walnut frame with imported velvet upholstery. 3+1+1 configuration. 10-year warranty.</p>
+        <div class="pcard-footer">
+          <div class="pcard-price">₹85,000 <sub>onwards</sub></div>
+          <a href="https://wa.me/917738615497?text=Hi!%20I%27m%20interested%20in%20the%20Royal%20Walnut%20Sofa%20Set.%20Please%20share%20details%20%26%20price." target="_blank" class="pwa-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pcard rv" data-cat="living" style="transition-delay:.1s">
+      <div class="pcard-img-wrap">
+        <img src="furniture_hero.png" alt="Center Table" class="pcard-img" onclick="openLB(this.src,'Marble Top Center Table')"/>
+        <div class="pcard-overlay"><span class="pcard-zoom-icon">🔍</span></div>
+      </div>
+      <div class="pcard-body">
+        <p class="pcard-cat">Living Room</p>
+        <h3>Marble Top Center Table</h3>
+        <p>Italian marble top with solid sheesham base. Golden brass inlays. Available in 2 sizes.</p>
+        <div class="pcard-footer">
+          <div class="pcard-price">₹28,000 <sub>onwards</sub></div>
+          <a href="https://wa.me/917738615497?text=Hi!%20I%27m%20interested%20in%20the%20Marble%20Top%20Center%20Table.%20Please%20share%20details." target="_blank" class="pwa-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pcard rv" data-cat="bedroom" style="transition-delay:.2s">
+      <span class="pcard-badge pcard-new">New Arrival</span>
+      <div class="pcard-img-wrap">
+        <img src="furniture_bedroom.png" alt="King Bed" class="pcard-img" onclick="openLB(this.src,'Heritage King Bed')"/>
+        <div class="pcard-overlay"><span class="pcard-zoom-icon">🔍</span></div>
+      </div>
+      <div class="pcard-body">
+        <p class="pcard-cat">Bedroom</p>
+        <h3>Heritage King Bed</h3>
+        <p>Solid teak king-size with tufted headboard, hydraulic storage & 2 side tables. Mattress included.</p>
+        <div class="pcard-footer">
+          <div class="pcard-price">₹1,20,000 <sub>set</sub></div>
+          <a href="https://wa.me/917738615497?text=Hi!%20I%27m%20interested%20in%20the%20Heritage%20King%20Bed.%20Please%20share%20details." target="_blank" class="pwa-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pcard rv" data-cat="dining" style="transition-delay:.3s">
+      <span class="pcard-badge pcard-hot">🔥 Popular</span>
+      <div class="pcard-img-wrap">
+        <img src="furniture_dining.png" alt="Dining Set" class="pcard-img" onclick="openLB(this.src,'Grand Teak Dining Set')"/>
+        <div class="pcard-overlay"><span class="pcard-zoom-icon">🔍</span></div>
+      </div>
+      <div class="pcard-body">
+        <p class="pcard-cat">Dining</p>
+        <h3>Grand Teak Dining Set</h3>
+        <p>Solid teak 6-seater dining table with premium upholstered chairs. Handcarved leg detailing.</p>
+        <div class="pcard-footer">
+          <div class="pcard-price">₹75,000 <sub>set</sub></div>
+          <a href="https://wa.me/917738615497?text=Hi!%20I%27m%20interested%20in%20the%20Grand%20Teak%20Dining%20Set.%20Please%20share%20details." target="_blank" class="pwa-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pcard rv" data-cat="office" style="transition-delay:.4s">
+      <div class="pcard-img-wrap">
+        <img src="furniture_office.png" alt="Executive Desk" class="pcard-img" onclick="openLB(this.src,'Executive Home Office')"/>
+        <div class="pcard-overlay"><span class="pcard-zoom-icon">🔍</span></div>
+      </div>
+      <div class="pcard-body">
+        <p class="pcard-cat">Office</p>
+        <h3>Executive L-Shape Desk</h3>
+        <p>Premium walnut veneer L-shape desk with cable management, 3 drawers, and leather writing surface.</p>
+        <div class="pcard-footer">
+          <div class="pcard-price">₹42,000 <sub>onwards</sub></div>
+          <a href="https://wa.me/917738615497?text=Hi!%20I%27m%20interested%20in%20the%20Executive%20L-Shape%20Desk.%20Please%20share%20details." target="_blank" class="pwa-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pcard rv" data-cat="bedroom" style="transition-delay:.5s">
+      <div class="pcard-img-wrap">
+        <img src="furniture_bedroom.png" alt="Wardrobe" class="pcard-img" onclick="openLB(this.src,'6-Door Mirror Wardrobe')"/>
+        <div class="pcard-overlay"><span class="pcard-zoom-icon">🔍</span></div>
+      </div>
+      <div class="pcard-body">
+        <p class="pcard-cat">Bedroom</p>
+        <h3>6-Door Mirror Wardrobe</h3>
+        <p>Full-length mirror sliding doors, internal organizers, soft-close hinges. Floor-to-ceiling fit.</p>
+        <div class="pcard-footer">
+          <div class="pcard-price">₹65,000 <sub>onwards</sub></div>
+          <a href="https://wa.me/917738615497?text=Hi!%20I%27m%20interested%20in%20the%206-Door%20Mirror%20Wardrobe.%20Please%20share%20details." target="_blank" class="pwa-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enquire
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROMISE BAND -->
+<section id="promise">
+  <div class="prm-item rv">
+    <div class="prm-icon">🌿</div>
+    <h3>Sustainable Wood</h3>
+    <p>Responsibly sourced from certified forests. Eco-conscious craftsmanship.</p>
+  </div>
+  <div class="prm-item rv" style="transition-delay:.1s">
+    <div class="prm-icon">🔨</div>
+    <h3>Master Crafted</h3>
+    <p>Each piece handcrafted by artisans with 20+ years of experience.</p>
+  </div>
+  <div class="prm-item rv" style="transition-delay:.2s">
+    <div class="prm-icon">🛡️</div>
+    <h3>15-Year Warranty</h3>
+    <p>Industry-leading warranty. We stand behind every piece we make.</p>
+  </div>
+  <div class="prm-item rv" style="transition-delay:.3s">
+    <div class="prm-icon">🚚</div>
+    <h3>Free Delivery</h3>
+    <p>Free delivery & professional installation across Mumbai, Thane & Pune.</p>
+  </div>
+  <div class="prm-item rv" style="transition-delay:.4s">
+    <div class="prm-icon">✏️</div>
+    <h3>Custom Orders</h3>
+    <p>Bespoke furniture designed around your space and personality.</p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-head rv">
+    <span class="tag">How It Works</span>
+    <h2 class="heading">From <em>Vision</em> to Reality</h2>
+    <div class="bar c"></div>
+    <p style="color:var(--mu);max-width:440px;margin:0 auto;font-size:.92rem;line-height:1.85;">Our simple 4-step process makes ordering premium furniture effortless</p>
+  </div>
+  <div class="steps">
+    <div class="step rv">
+      <div class="step-num">01</div>
+      <div class="step-emoji">💬</div>
+      <h3>WhatsApp Us</h3>
+      <p>Share your requirements, photos of your space, and style preferences instantly on WhatsApp.</p>
+    </div>
+    <div class="step rv" style="transition-delay:.15s">
+      <div class="step-num">02</div>
+      <div class="step-emoji">📐</div>
+      <h3>Free Home Visit</h3>
+      <p>Our designer visits your home, takes measurements, and presents 3D design mockups.</p>
+    </div>
+    <div class="step rv" style="transition-delay:.3s">
+      <div class="step-num">03</div>
+      <div class="step-emoji">🔨</div>
+      <h3>Expert Crafting</h3>
+      <p>Our master artisans handcraft your furniture using premium materials over 2–4 weeks.</p>
+    </div>
+    <div class="step rv" style="transition-delay:.45s">
+      <div class="step-num">04</div>
+      <div class="step-emoji">🏠</div>
+      <h3>White Glove Delivery</h3>
+      <p>We deliver, assemble, and install — you just sit back and enjoy your dream space.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testi-head rv">
+    <span class="tag">Customer Reviews</span>
+    <h2 class="heading">2,000+ <em>Happy Homes</em></h2>
+    <div class="bar c"></div>
+  </div>
+  <div class="testi-grid">
+    <div class="tcard rv">
+      <div class="stars">★★★★★</div>
+      <div class="tcard-q">"</div>
+      <p class="tcard-text">The sofa set is absolutely stunning. The quality of wood and stitching is exceptional. WhatsApp ordering made it so convenient — I sent my room photos and got the perfect design within hours!</p>
+      <div class="tcard-author">
+        <div class="tcard-av">R</div>
+        <div><h4>Rekha Sharma</h4><span>Bandra, Mumbai</span></div>
+      </div>
+    </div>
+    <div class="tcard rv" style="transition-delay:.12s">
+      <div class="stars">★★★★★</div>
+      <div class="tcard-q">"</div>
+      <p class="tcard-text">Got my entire 3BHK furnished. The bedroom set, dining table — everything is impeccable. They delivered on time and the installation team was incredibly professional.</p>
+      <div class="tcard-author">
+        <div class="tcard-av">A</div>
+        <div><h4>Arjun Mehta</h4><span>Thane West</span></div>
+      </div>
+    </div>
+    <div class="tcard rv" style="transition-delay:.24s">
+      <div class="stars">★★★★★</div>
+      <div class="tcard-q">"</div>
+      <p class="tcard-text">I ordered a custom wardrobe with specific dimensions. WoodCraft nailed it perfectly. The soft-close drawers, the finish — everything is luxury. My guests always ask where I got it!</p>
+      <div class="tcard-author">
+        <div class="tcard-av">P</div>
+        <div><h4>Priya Nair</h4><span>Powai, Mumbai</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP HERO -->
+<section id="wa-hero">
+  <div class="wa-hero-rings">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+  </div>
+  <div class="wa-hero-c rv">
+    <div class="wa-big">💬</div>
+    <h2>Transform Your Home.<br>Just <em>WhatsApp</em> Us.</h2>
+    <p>Get instant quotes, share photos of your space, and our furniture expert will help you design your dream home — all on WhatsApp, hassle-free.</p>
+    <div class="wa-num-box">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span>+91 77386 15497</span>
+    </div>
+    <a href="https://wa.me/917738615497?text=Hello%20WoodCraft!%20I%27d%20like%20to%20enquire%20about%20your%20furniture%20collections.%20Please%20help%20me." target="_blank" class="wa-main-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Start Chat Now — Free Quote
+    </a>
+    <div class="wa-shortcuts">
+      <a href="https://wa.me/917738615497?text=Hi!%20I%20need%20a%20sofa%20set%20quote.%20My%20living%20room%20is..." target="_blank" class="wa-sc">🛋️ Sofa Quote</a>
+      <a href="https://wa.me/917738615497?text=Hi!%20I%20need%20a%20complete%20bedroom%20set%20quote." target="_blank" class="wa-sc">🛏️ Bedroom Set</a>
+      <a href="https://wa.me/917738615497?text=Hi!%20I%20want%20a%20custom%20furniture%20design%20for%20my%20home." target="_blank" class="wa-sc">✏️ Custom Order</a>
+      <a href="https://wa.me/917738615497?text=Hi!%20What%20are%20your%20showroom%20timings%20and%20address?" target="_blank" class="wa-sc">📍 Visit Showroom</a>
+      <a href="https://wa.me/917738615497?text=Hi!%20I%20need%20office%20furniture%20for%20my%20home%20office." target="_blank" class="wa-sc">💼 Office Furniture</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="cinfo rv-l">
+    <span class="tag">Get In Touch</span>
+    <h2 class="heading">Visit Our <em>Showroom</em></h2>
+    <div class="bar"></div>
+    <p>Come see our collections in person or reach out on WhatsApp for the fastest service. Our design consultants are ready to help you create your dream home.</p>
+    <div class="clist">
+      <div class="citem">
+        <div class="citem-icon">📍</div>
+        <div><h4>Showroom Address</h4><p>Shop No. 12, Furniture Market, Mumbai – 400001, Maharashtra</p></div>
+      </div>
+      <div class="citem">
+        <div class="citem-icon">💬</div>
+        <div><h4>WhatsApp / Call</h4><p><a href="https://wa.me/917738615497" target="_blank">+91 77386 15497</a></p></div>
+      </div>
+      <div class="citem">
+        <div class="citem-icon">🕐</div>
+        <div><h4>Showroom Hours</h4><p>Mon–Sat: 10AM–8PM &nbsp;|&nbsp; Sun: 11AM–6PM</p></div>
+      </div>
+      <div class="citem">
+        <div class="citem-icon">🚚</div>
+        <div><h4>Delivery Zone</h4><p>Free delivery & install — Mumbai, Thane & Pune</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="cform rv-r">
+    <h3>Send an Enquiry</h3>
+    <div class="f2">
+      <div class="fg"><label for="n">Your Name</label><input id="n" type="text" placeholder="Rajesh Kumar"/></div>
+      <div class="fg"><label for="p">Phone Number</label><input id="p" type="tel" placeholder="+91 98765 43210"/></div>
+    </div>
+    <div class="fg"><label for="cat">Category</label>
+      <select id="cat">
+        <option value="">Select furniture type</option>
+        <option>Living Room Set</option>
+        <option>Bedroom Set</option>
+        <option>Dining Set</option>
+        <option>Office Furniture</option>
+        <option>Custom / Bespoke Order</option>
+        <option>Full Home Furnishing</option>
+      </select>
+    </div>
+    <div class="fg"><label for="msg">Requirements</label>
+      <textarea id="msg" placeholder="Tell us your room size, style preferences, budget range..."></textarea>
+    </div>
+    <div class="cform-btns">
+      <button class="fsub" onclick="sendForm()">📧 Send Enquiry</button>
+      <a href="https://wa.me/917738615497?text=Hello%20WoodCraft!%20I%27d%20like%20to%20enquire%20about%20furniture." target="_blank" class="fwa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Or Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fg-grid">
+    <div class="fb-col">
+      <div class="fb-logo"><a href="#" class="logo">🪵 WoodCraft</a></div>
+      <p class="fb-p">Premium handcrafted furniture for every home. Serving Mumbai, Thane and Pune with passion and craftsmanship since 2009.</p>
+      <a href="https://wa.me/917738615497?text=Hello%20WoodCraft!" target="_blank" class="fb-wa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        +91 7738615497
+      </a>
+    </div>
+    <div class="fcol">
+      <h4>Collections</h4>
+      <ul>
+        <li><a href="#collections">🛋️ Living Room</a></li>
+        <li><a href="#collections">🛏️ Bedroom Sets</a></li>
+        <li><a href="#collections">🍽️ Dining Sets</a></li>
+        <li><a href="#collections">💼 Office Furniture</a></li>
+        <li><a href="https://wa.me/917738615497?text=Hi!%20I%20want%20a%20custom%20order." target="_blank">✏️ Custom Orders</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Showroom</a></li>
+        <li><a href="https://wa.me/917738615497" target="_blank">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="https://wa.me/917738615497?text=Hi!%20I%20need%20a%20free%20quote." target="_blank">📋 Free Quote</a></li>
+        <li><a href="https://wa.me/917738615497?text=Hi!%20I%20want%20to%20book%20a%20home%20visit." target="_blank">🏠 Book Home Visit</a></li>
+        <li><a href="https://wa.me/917738615497?text=Hi!%20I%20need%20after-sale%20support." target="_blank">🛠️ After-Sale Support</a></li>
+        <li><a href="#contact">📍 Mumbai Location</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <p>© 2025 WoodCraft Furniture. All rights reserved.</p>
+    <p>Made with ❤️ for beautiful homes | <a href="https://wa.me/917738615497" target="_blank">💬 WhatsApp: +91 7738615497</a></p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lb">
+  <button id="lb-close" onclick="closeLB()">✕</button>
+  <img id="lb-img" src="" alt=""/>
+  <p id="lb-caption"></p>
+</div>
+
+<!-- FLOATING WHATSAPP WIDGET -->
+<div id="waWidget">
+  <div id="waChat">
+    <div class="wc-head">
+      <div class="wc-av">🪵</div>
+      <div class="wc-info">
+        <h4>WoodCraft Furniture</h4>
+        <span><span class="wc-online"></span>Online — Instant Reply</span>
+      </div>
+      <button class="wc-x" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="wc-body">
+      <div class="wc-bubble">👋 Hello! Welcome to WoodCraft.<br><br>How can we help you today?</div>
+      <div class="wc-bubble2">💬 Ask us anything — quotes, designs, custom orders, or just browse our catalogue!</div>
+    </div>
+    <div class="wc-footer">
+      <a href="https://wa.me/917738615497?text=Hello%20WoodCraft!%20I%27d%20like%20to%20know%20more%20about%20your%20furniture." target="_blank" class="wc-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Open WhatsApp Chat
+      </a>
+    </div>
+  </div>
+  <button id="waFab" onclick="toggleChat()" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="fab-badge">1</span>
+  </button>
+</div>
+
+<script>
+// ══ CURSOR ══
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function animCursor(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(animCursor);})();
+document.querySelectorAll('a,button,.pcard').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='28px';cur.style.height='28px';curR.style.width='55px';curR.style.height='55px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='18px';cur.style.height='18px';curR.style.width='38px';curR.style.height='38px';});
+});
+
+// ══ LOADER ══
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('out'),1600);
+});
+
+// ══ NAV ══
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>70));
+
+// ══ MOBILE MENU ══
+function mm(open){document.getElementById('mmenu').classList.toggle('open',!!open);}
+document.getElementById('mmClose').onclick=()=>mm(0);
+
+// ══ HERO PARTICLE CANVAS ══
+(function(){
+  const cvs=document.getElementById('heroCanvas');
+  const ctx=cvs.getContext('2d');
+  let W,H,pts=[];
+  function resize(){W=cvs.width=innerWidth;H=cvs.height=cvs.parentElement.offsetHeight;}
+  resize();window.addEventListener('resize',resize);
+  function Pt(){
+    this.x=Math.random()*W;this.y=Math.random()*H;
+    this.vx=(Math.random()-.5)*.3;this.vy=(Math.random()-.5)*.3;
+    this.r=Math.random()*1.5+.5;this.a=Math.random();
+  }
+  for(let i=0;i<80;i++)pts.push(new Pt());
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.28);
+      ctx.fillStyle=`rgba(201,150,59,${p.a*.5})`;ctx.fill();
+    });
+    pts.forEach((a,i)=>{
+      for(let j=i+1;j<pts.length;j++){
+        const b=pts[j];
+        const d=Math.hypot(a.x-b.x,a.y-b.y);
+        if(d<100){
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle=`rgba(201,150,59,${(1-d/100)*.12})`;ctx.lineWidth=.6;ctx.stroke();
+        }
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ══ SCROLL REVEAL ══
+const rvObs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('go'),i*60);rvObs.unobserve(e.target);}});
+},{threshold:.1});
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>rvObs.observe(el));
+
+// ══ COUNTER ANIMATION ══
+function animCount(el,target,suffix=''){
+  let start=0;const dur=2000;const step=dur/target;
+  const t=setInterval(()=>{
+    start+=Math.ceil(target/80);if(start>=target){start=target;clearInterval(t);}
+    el.textContent=start.toLocaleString()+suffix;
+  },25);
+}
+const cntObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.count').forEach(el=>{
+        const tgt=+el.dataset.target;
+        const sfx=tgt>=1000?'+':(tgt===98?'%':'');
+        animCount(el,tgt,sfx);
+      });
+      cntObs.disconnect();
+    }
+  });
+},{threshold:.5});
+const statsSection=document.querySelector('.stats-row');
+if(statsSection)cntObs.observe(statsSection);
+
+// ══ PRODUCT FILTER ══
+function filterP(btn,cat){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  const grid=document.getElementById('prodGrid');
+  grid.style.opacity='0';grid.style.transform='translateY(15px)';
+  setTimeout(()=>{
+    document.querySelectorAll('.pcard').forEach(c=>{
+      c.style.display=(cat==='all'||c.dataset.cat===cat)?'block':'none';
+    });
+    grid.style.transition='opacity .4s,transform .4s';
+    grid.style.opacity='1';grid.style.transform='translateY(0)';
+  },200);
+}
+
+// ══ LIGHTBOX ══
+function openLB(src,cap){
+  document.getElementById('lb-img').src=src;
+  document.getElementById('lb-caption').textContent=cap||'';
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLB();});
+
+// ══ WHATSAPP WIDGET ══
+let chatOpen=false;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('waChat').classList.toggle('show',chatOpen);
+  document.querySelector('.fab-badge').style.display=chatOpen?'none':'flex';
+}
+// Auto-open after 6s
+setTimeout(()=>{if(!chatOpen){chatOpen=true;document.getElementById('waChat').classList.add('show');}},6000);
+
+// ══ ENQUIRY FORM ══
+function sendForm(){
+  const n=document.getElementById('n').value.trim();
+  const p=document.getElementById('p').value.trim();
+  const c=document.getElementById('cat').value;
+  const m=document.getElementById('msg').value.trim();
+  if(!n||!p){alert('Please enter your name and phone number.');return;}
+  const txt=`Hello WoodCraft! 👋\n\nName: ${n}\nPhone: ${p}\nCategory: ${c||'General Enquiry'}\nRequirements:\n${m||'Please share your catalogue and pricing.'}`;
+  window.open('https://wa.me/917738615497?text='+encodeURIComponent(txt),'_blank');
+}
+
+// ══ PARALLAX HERO ══
+window.addEventListener('scroll',()=>{
+  const hb=document.querySelector('.hero-bg');
+  if(hb)hb.style.transform=`translateY(${scrollY*.35}px)`;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "aahna-villa",
+  "version": "1.0.0",
+  "description": "Showcase website for Aahna Villa",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server -p 5173"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
